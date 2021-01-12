@@ -103,8 +103,8 @@ int main(void)
   LCD_clear(lcd_2);
   LCD_set_cursor(lcd_1, 0, 0);
   LCD_set_cursor(lcd_2, 0,0);
-  LCD_display(lcd_1, "LCD1");
-  LCD_display(lcd_2, "LCD2");
+  LCD_display(lcd_1, "LCD1DDD");
+  LCD_display(lcd_2, "LCD2CCC");
 
   matrices_init();
   matrix_player1_friendly_a[0] = 0b00000001;

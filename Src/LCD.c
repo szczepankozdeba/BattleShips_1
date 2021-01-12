@@ -35,8 +35,8 @@ static void LCD_sendData(uint8_t data1)
 
 void LCD_init(uint8_t lcd_number, I2C_HandleTypeDef *i2cpointer)
 {
-	uint8_t arg = lcd_number;
-	Set_LCD(arg);
+	//uint8_t arg = lcd_number;
+	Set_LCD(lcd_number);
 
     HAL_Delay(50);
 
@@ -72,8 +72,7 @@ void LCD_init(uint8_t lcd_number, I2C_HandleTypeDef *i2cpointer)
 
 void LCD_set_cursor(uint8_t lcd_number, uint8_t row, uint8_t col)
 {
-	uint8_t arg = lcd_number;
-	Set_LCD(arg);
+	Set_LCD(lcd_number);
 
     uint8_t cursor_data;
     cursor_data = (col) & 0x0F;
@@ -91,8 +90,7 @@ void LCD_set_cursor(uint8_t lcd_number, uint8_t row, uint8_t col)
 
 void LCD_clear(uint8_t lcd_number)
 {
-	uint8_t arg = lcd_number;
-	Set_LCD(arg);
+	Set_LCD(lcd_number);
 
 	LCD_sendCommand(0x01);
 	HAL_Delay(3);
@@ -101,8 +99,8 @@ void LCD_clear(uint8_t lcd_number)
 
 void LCD_display(uint8_t lcd_number,const char* text, ...)
 {
-	uint8_t arg = lcd_number;
-	Set_LCD(arg);
+
+	Set_LCD(lcd_number);
 
 	char text_tab[20];
 	va_list va_text;
