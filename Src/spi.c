@@ -21,12 +21,7 @@
 #include "spi.h"
 
 /* USER CODE BEGIN 0 */
-void My_SPI_init(void)
-{
-	//RCC->AHBENR = RCC_AHBENR_GPIOBEN;      //port B clock EN
-	RCC->APB1ENR = RCC_APB1ENR_SPI2EN;    // SPI clock EE
 
-}
 /* USER CODE END 0 */
 
 SPI_HandleTypeDef hspi2;
@@ -110,6 +105,16 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
 }
 
 /* USER CODE BEGIN 1 */
+void spi_send(uint8_t adress, uint8_t data, GPIO_TypeDef* PORT, uint16_t PIN)
+{
+	HAL_GPIO_WritePin(PORT, PIN, GPIO_PIN_RESET);
+
+	HAL_SPI_Transmit(&hspi2, &adress, 1, HAL_MAX_DELAY);
+	HAL_SPI_Transmit(&hspi2, &data, 1, HAL_MAX_DELAY);
+
+	HAL_GPIO_WritePin(PORT, PIN, GPIO_PIN_SET);
+
+}
 
 /* USER CODE END 1 */
 

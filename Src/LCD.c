@@ -3,11 +3,11 @@
 static I2C_HandleTypeDef*  hi2c;
 
 
-static uint8_t LCD_address = 0x7E;
+static uint8_t LCD_address = 0x4E;
 
 void Set_LCD(uint8_t lcd_nr)
 {
-	if (lcd_nr == lcd_1)
+	if (lcd_nr == 1)
 		LCD_address = 0x4E;
 	else
 		LCD_address = 0x7E;
@@ -33,8 +33,11 @@ static void LCD_sendData(uint8_t data1)
 
 
 
-void LCD_init(I2C_HandleTypeDef *i2cpointer)
+void LCD_init(uint8_t lcd_number, I2C_HandleTypeDef *i2cpointer)
 {
+	uint8_t arg = lcd_number;
+	Set_LCD(arg);
+
     HAL_Delay(50);
 
     hi2c = i2cpointer;
@@ -61,7 +64,9 @@ void LCD_init(I2C_HandleTypeDef *i2cpointer)
     LCD_sendCommand(0x08 | 0x04);
     HAL_Delay(3);
 
-    LCD_clear();
+    LCD_clear(lcd_1);
+    LCD_clear(lcd_2);
+
 }
 
 
@@ -84,7 +89,7 @@ void LCD_set_cursor(uint8_t lcd_number, uint8_t row, uint8_t col)
     }
 }
 
-void LCD_clear(lcd_number)
+void LCD_clear(uint8_t lcd_number)
 {
 	uint8_t arg = lcd_number;
 	Set_LCD(arg);

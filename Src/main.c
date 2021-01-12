@@ -49,19 +49,6 @@
 
 /* USER CODE BEGIN PV */
 
-
-void spi_send(uint8_t adress, uint8_t data, GPIO_TypeDef* PORT, uint16_t PIN)
-{
-	HAL_GPIO_WritePin(PORT, PIN, GPIO_PIN_RESET);
-
-	HAL_SPI_Transmit(&hspi2, &adress, 1, HAL_MAX_DELAY);
-	HAL_SPI_Transmit(&hspi2, &data, 1, HAL_MAX_DELAY);
-
-	HAL_GPIO_WritePin(PORT, PIN, GPIO_PIN_SET);
-
-}
-
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,13 +97,14 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
-  LCD_init(&hi2c3);
+  LCD_init(lcd_1, &hi2c3);
+  LCD_init(lcd_2, &hi2c3);
   LCD_clear(lcd_1);
+  LCD_clear(lcd_2);
   LCD_set_cursor(lcd_1, 0, 0);
   LCD_set_cursor(lcd_2, 0,0);
-  LCD_clear(lcd_1);
-  LCD_display(lcd_1, "***** ***");
-  LCD_display(lcd_2, "i konferacje");
+  LCD_display(lcd_1, "LCD1");
+  LCD_display(lcd_2, "LCD2");
 
   matrices_init();
   matrix_player1_friendly_a[0] = 0b00000001;

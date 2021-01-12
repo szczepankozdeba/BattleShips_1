@@ -34,7 +34,7 @@ extern "C" {
 extern SPI_HandleTypeDef hspi2;
 
 /* USER CODE BEGIN Private defines */
-
+void spi_send(uint8_t adress, uint8_t data, GPIO_TypeDef* PORT, uint16_t PIN);
 /* USER CODE END Private defines */
 
 void MX_SPI2_Init(void);
