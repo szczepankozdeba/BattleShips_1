@@ -111,14 +111,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   LCD_init(&hi2c3);
-  LCD_clear();
-  LCD_set_cursor(0,0);
-  Set_LCD(1);
-  LCD_clear();
-  LCD_display("j34546ebac");
-  Set_LCD(2);
-  LCD_clear();
-  LCD_display("pr56568879is");
+  LCD_clear(lcd_1);
+  LCD_set_cursor(lcd_1, 0, 0);
+  LCD_set_cursor(lcd_2, 0,0);
+  LCD_clear(lcd_1);
+  LCD_display(lcd_1, "***** ***");
+  LCD_display(lcd_2, "i konferacje");
 
   matrices_init();
   matrix_player1_friendly_a[0] = 0b00000001;

@@ -5,9 +5,9 @@ static I2C_HandleTypeDef*  hi2c;
 
 static uint8_t LCD_address = 0x7E;
 
-void Set_LCD(uint8_t address)
+void Set_LCD(uint8_t lcd_nr)
 {
-	if (address==1)
+	if (lcd_nr == lcd_1)
 		LCD_address = 0x4E;
 	else
 		LCD_address = 0x7E;
@@ -65,8 +65,11 @@ void LCD_init(I2C_HandleTypeDef *i2cpointer)
 }
 
 
-void LCD_set_cursor(uint8_t row, uint8_t col)
+void LCD_set_cursor(uint8_t lcd_number, uint8_t row, uint8_t col)
 {
+	uint8_t arg = lcd_number;
+	Set_LCD(arg);
+
     uint8_t cursor_data;
     cursor_data = (col) & 0x0F;
     if(row == 0)
@@ -81,24 +84,30 @@ void LCD_set_cursor(uint8_t row, uint8_t col)
     }
 }
 
-void LCD_clear(void)
+void LCD_clear(lcd_number)
 {
+	uint8_t arg = lcd_number;
+	Set_LCD(arg);
+
 	LCD_sendCommand(0x01);
 	HAL_Delay(3);
 }
 
 
-void LCD_display(const char* text, ...)
+void LCD_display(uint8_t lcd_number,const char* text, ...)
 {
+	uint8_t arg = lcd_number;
+	Set_LCD(arg);
+
 	char text_tab[20];
 	va_list va_text;
 
 	va_start(va_text, text);
-	vsprintf(text_tab, text, Va_text);
+	vsprintf(text_tab, text, va_text);
 	va_end(va_text);
 
-	for(uint8_t i = 0;  i < strlen(stringArray) && i < 16; i++)
+	for(uint8_t i = 0;  i < strlen(text_tab) && i < 16; i++)
 	{
-		LCD_sendData((uint8_t)stringArray[i]);
+		LCD_sendData((uint8_t)text_tab[i]);
 	}
 }
