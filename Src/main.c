@@ -94,8 +94,35 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   MX_I2C3_Init();
-  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
+  Matrix_struct matrix1;
+  Matrix_struct matrix2;
+  Matrix_struct matrix3;
+  Matrix_struct matrix4;
+
+  matrix_init(CS1_GPIO_Port, CS1_Pin, &matrix1);
+  matrix_init(CS2_GPIO_Port, CS2_Pin, &matrix2);
+  matrix_init(CS3_GPIO_Port, CS3_Pin, &matrix3);
+  matrix_init(CS4_GPIO_Port, CS4_Pin, &matrix4);
+
+  matrix_clear(&matrix1);
+  matrix_clear(&matrix2);
+  matrix_clear(&matrix3);
+  matrix_clear(&matrix4);
+/*
+  matrix_LED_on_row(&matrix1, 1, 0b01010101);
+  matrix_LED_on_row(&matrix2, 1, 0b01010101);
+  matrix_LED_on_row(&matrix3, 1, 0b01010101);
+  matrix_LED_on_row(&matrix4, 1, 0b01010101);
+
+  matrix_LED_blnik_row(&matrix1, 2, 0b01010101);
+  matrix_LED_blnik_row(&matrix2, 2, 0b01010101);
+  matrix_LED_blnik_row(&matrix3, 2, 0b01010101);
+  matrix_LED_blnik_row(&matrix4, 2, 0b01010101);
+*/
+  matrix_LED_on(&matrix1, 2, 6);
+  //matrix_LED_on(&matrix2, 2, 4);
+ ;
 
   LCD_init(lcd_1, &hi2c3);
   LCD_init(lcd_2, &hi2c3);
@@ -103,18 +130,11 @@ int main(void)
   LCD_clear(lcd_2);
   LCD_set_cursor(lcd_1, 0, 0);
   LCD_set_cursor(lcd_2, 0,0);
-  LCD_display(lcd_1, "LCD1DDD");
-  LCD_display(lcd_2, "LCD2CCC");
+  LCD_display(lcd_1, "    podaj Z");
+  LCD_display(lcd_2, "     ustaw ");
+  LCD_set_cursor(lcd_2, 1,0);
+  LCD_display(lcd_2, "  dwumas ");
 
-  matrices_init();
-  matrix_player1_friendly_a[0] = 0b00000001;
-  matrix_player1_friendly_b [1] = 0b00000001;
-  matrix_player1_enemy_a [2] = 0b00000001;
-  matrix_player1_enemy_b [2] = 0b00000001;
-  matrix_player2_friendly_a [3] = 0b00000001;
-  matrix_player2_friendly_b [3] = 0b00000001;
-  matrix_player2_enemy_a [3] = 0b00000001;
-  matrix_player2_enemy_b [2] = 0b00000001;
 
   /* USER CODE END 2 */
 
@@ -127,69 +147,53 @@ int main(void)
 	  switch (check_button())
 	  {
 	  case 1:
-		  matrix_player1_friendly_a[0] = 0b11111111;
-		  matrix_player1_friendly_b[1] = 0b11111111;
+
 		  break;
 	  case 2:
-	 		  matrix_player1_enemy_a[0] = 0b11111111;
-	 		  matrix_player1_enemy_b[1] = 0b11111111;
+
 	 		  break;
 	  case 3:
-	 		  matrix_player2_friendly_a[0] = 0b11111111;
-	 		  matrix_player2_friendly_b[1] = 0b11111111;
+
 	 		  break;
 	  case 4:
-	 		  matrix_player2_enemy_a[0] = 0b11111111;
-	 		  matrix_player2_enemy_b[1] = 0b11111111;
+
 	 		  break;
 	  case 5:
-	  		  matrix_player1_friendly_a[2] = 0b11111111;
-	  		  matrix_player1_friendly_b[3] = 0b11111111;
+
 	  		  break;
 	  case 6:
-	  	 	matrix_player1_enemy_a[2] = 0b11111111;
-	  	 	matrix_player1_enemy_b[3] = 0b11111111;
+
 	  	 	break;
 	  case 7:
-	  	 	matrix_player2_friendly_a[2] = 0b11111111;
-	  	 	matrix_player2_friendly_b[3] = 0b11111111;
+
 	  	 	break;
 	  case 8:
-	  	 	matrix_player2_enemy_a[2] = 0b11111111;
-	  	 	matrix_player2_enemy_b[3] = 0b11111111;
+
 	  	 	break;
 
 	  case 10:
-	  		matrix_player1_friendly_a[4] = 0b11111111;
-	  		matrix_player1_friendly_b[5] = 0b11111111;
+
 	  		break;
 	 case 11:
-	  		 matrix_player1_enemy_a[4] = 0b11111111;
-	  		 matrix_player1_enemy_b[5] = 0b11111111;
+
 	  		 break;
 	 case 12:
-	  		matrix_player2_friendly_a[4] = 0b11111111;
-	  		matrix_player2_friendly_b[5] = 0b11111111;
+
 	  		break;
 	case 13:
-	  		matrix_player2_enemy_a[4] = 0b11111111;
-	  		matrix_player2_enemy_b[5] = 0b11111111;
+
 	  		break;
 	case 14:
-	  		matrix_player1_friendly_a[6] = 0b11111111;
-	  		matrix_player1_friendly_b[7] = 0b11111111;
+
 	  		break;
 	case 15:
-	  		matrix_player1_enemy_a[6] = 0b11111111;
-	  		matrix_player1_enemy_b[7] = 0b11111111;
+
 	  		break;
 	case 16:
-	  		matrix_player2_friendly_a[6] = 0b11111111;
-	  		matrix_player2_friendly_b[7] = 0b11111111;
+
 	  		break;
 	case 17:
-	  		matrix_player2_enemy_a[6] = 0b11111111;
-	  		matrix_player2_enemy_b[7] = 0b11111111;
+
 	  		break;
 	  default:
 		  break;
@@ -238,8 +242,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C2|RCC_PERIPHCLK_I2C3;
-  PeriphClkInit.I2c2ClockSelection = RCC_I2C2CLKSOURCE_HSI;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_I2C3;
   PeriphClkInit.I2c3ClockSelection = RCC_I2C3CLKSOURCE_HSI;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {

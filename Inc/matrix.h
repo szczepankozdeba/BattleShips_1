@@ -1,16 +1,24 @@
 #include "main.h"
 
-uint8_t matrix_player1_friendly_a [8];
-uint8_t matrix_player1_friendly_b [8];
-uint8_t matrix_player1_enemy_a [8];
-uint8_t matrix_player1_enemy_b [8];
-uint8_t matrix_player2_friendly_a [8];
-uint8_t matrix_player2_friendly_b [8];
-uint8_t matrix_player2_enemy_a [8];
-uint8_t matrix_player2_enemy_b [8];
 
-void matrices_init(void);
-void matrix_send(uint8_t MATRIX[8], GPIO_TypeDef* PORT, uint16_t PIN);
+#define ll_matrix_number 4
+
+
+typedef struct
+{
+
+GPIO_TypeDef* Port;
+uint16_t Pin;
+uint8_t matrix_a;
+uint8_t matrix_b;
+
+}Matrix_struct;
+
+void matrix_init(GPIO_TypeDef* PORT, uint16_t PIN, Matrix_struct* matrix_name);
 void matrix_send_all(void);
-void matrix_LED_hit(void);
-void matrix_LED_miss(void);
+void matrix_set_blink_time(uint16_t time);
+void matrix_LED_on_row(Matrix_struct* matrix_name, uint8_t row, uint8_t LED);
+void matrix_LED_on(Matrix_struct* matrix_name, uint8_t x, uint8_t y);
+void matrix_LED_blnik_row(Matrix_struct* matrix_name, uint8_t row, uint8_t LED);
+void matrix_LED_blnik(Matrix_struct* matrix_name, uint8_t x, uint8_t y);
+void matrix_clear(Matrix_struct* matrix_name);
