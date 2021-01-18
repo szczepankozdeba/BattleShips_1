@@ -74,6 +74,14 @@ void matrix_LED_on(Matrix_struct* matrix_name, uint8_t x, uint8_t y)
 	matrix_LED_list[matrix_name->matrix_b][x-1] |= (1<<(y-1));
 }
 
+
+void matrix_LED_off(Matrix_struct* matrix_name, uint8_t x, uint8_t y)
+{
+	matrix_LED_list[matrix_name->matrix_a][x-1] &= ~(1<<(y-1));
+	matrix_LED_list[matrix_name->matrix_b][x-1] &= ~(1<<(y-1));
+}
+
+
 void matrix_LED_blnik_row(Matrix_struct* matrix_name, uint8_t row, uint8_t LED)
 {
 	matrix_LED_list[matrix_name->matrix_a][row-1] = LED;

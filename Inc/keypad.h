@@ -1,4 +1,9 @@
 #include "main.h"
 
-uint8_t check_button_pressed(void);
+#ifndef __keypad_H__
+#define __keypad_H__
+
+
 uint8_t check_button(void);
+
+#endif

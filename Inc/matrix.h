@@ -1,5 +1,7 @@
 #include "main.h"
 
+#ifndef __matrix_H__
+#define __matrix_H__
 
 #define ll_matrix_number 4
 
@@ -19,6 +21,8 @@ void matrix_send_all(void);
 void matrix_set_blink_time(uint16_t time);
 void matrix_LED_on_row(Matrix_struct* matrix_name, uint8_t row, uint8_t LED);
 void matrix_LED_on(Matrix_struct* matrix_name, uint8_t x, uint8_t y);
+void matrix_LED_off(Matrix_struct* matrix_name, uint8_t x, uint8_t y);
 void matrix_LED_blnik_row(Matrix_struct* matrix_name, uint8_t row, uint8_t LED);
 void matrix_LED_blnik(Matrix_struct* matrix_name, uint8_t x, uint8_t y);
 void matrix_clear(Matrix_struct* matrix_name);
+#endif

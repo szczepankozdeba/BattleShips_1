@@ -120,6 +120,7 @@ int main(void)
   matrix_LED_blnik_row(&matrix3, 2, 0b01010101);
   matrix_LED_blnik_row(&matrix4, 2, 0b01010101);
 */
+
   matrix_LED_on(&matrix1, 2, 6);
   //matrix_LED_on(&matrix2, 2, 4);
  ;
@@ -142,63 +143,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  matrix_send_all();
 
-	  switch (check_button())
-	  {
-	  case 1:
+	  set_ships(&player1);
 
-		  break;
-	  case 2:
-
-	 		  break;
-	  case 3:
-
-	 		  break;
-	  case 4:
-
-	 		  break;
-	  case 5:
-
-	  		  break;
-	  case 6:
-
-	  	 	break;
-	  case 7:
-
-	  	 	break;
-	  case 8:
-
-	  	 	break;
-
-	  case 10:
-
-	  		break;
-	 case 11:
-
-	  		 break;
-	 case 12:
-
-	  		break;
-	case 13:
-
-	  		break;
-	case 14:
-
-	  		break;
-	case 15:
-
-	  		break;
-	case 16:
-
-	  		break;
-	case 17:
-
-	  		break;
-	  default:
-		  break;
-	  };
-	  HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

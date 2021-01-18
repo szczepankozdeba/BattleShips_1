@@ -58,8 +58,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define C3A_Pin GPIO_PIN_12
-#define C3A_GPIO_Port GPIOB
+#define C14_Pin GPIO_PIN_13
+#define C14_GPIO_Port GPIOC
+#define C21_Pin GPIO_PIN_0
+#define C21_GPIO_Port GPIOC
+#define C22_Pin GPIO_PIN_1
+#define C22_GPIO_Port GPIOC
+#define C23_Pin GPIO_PIN_2
+#define C23_GPIO_Port GPIOC
+#define C24_Pin GPIO_PIN_3
+#define C24_GPIO_Port GPIOC
 #define CS4_Pin GPIO_PIN_14
 #define CS4_GPIO_Port GPIOB
 #define CS2_Pin GPIO_PIN_6
@@ -68,18 +76,18 @@ void Error_Handler(void);
 #define CS1_GPIO_Port GPIOC
 #define CS3_Pin GPIO_PIN_8
 #define CS3_GPIO_Port GPIOC
-#define C4A_Pin GPIO_PIN_9
-#define C4A_GPIO_Port GPIOC
-#define C2A_Pin GPIO_PIN_9
-#define C2A_GPIO_Port GPIOA
+#define C11_Pin GPIO_PIN_10
+#define C11_GPIO_Port GPIOA
+#define C12_Pin GPIO_PIN_11
+#define C12_GPIO_Port GPIOA
+#define C13_Pin GPIO_PIN_12
+#define C13_GPIO_Port GPIOA
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
-#define C4B_Pin GPIO_PIN_2
-#define C4B_GPIO_Port GPIOD
-#define C3B_Pin GPIO_PIN_3
-#define C3B_GPIO_Port GPIOB
-#define C2B_Pin GPIO_PIN_4
-#define C2B_GPIO_Port GPIOB
+#define keypad2_Pin GPIO_PIN_10
+#define keypad2_GPIO_Port GPIOC
+#define keypad1_Pin GPIO_PIN_11
+#define keypad1_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
