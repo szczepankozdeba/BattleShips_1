@@ -5,11 +5,11 @@
 #include "matrix.h"
 
 
-uint8_t end=0; // variable for informing if the player has ended their move
-uint8_t ship_current_position_x = 0; //current position of ship (used during placing)
-uint8_t ship_current_position_y = 0; //current position of ship (used during placing)
-uint8_t rotation = 0; //rotation of ship "0" for vertical (default) or "1" for horizontal (used during placing)
-uint8_t winner = 0; //variable for winner
+uint8_t end=0;                          // variable for informing if the player has ended their move
+uint8_t ship_current_position_x = 0;   //current position of ship (used during placing)
+uint8_t ship_current_position_y = 0;  //current position of ship (used during placing)
+uint8_t rotation = 0;                //rotation of ship "0" for vertical (default) or "1" for horizontal (used during placing)
+uint8_t winner = 0;                 //variable for winner
 
 
 void game_init(Player* player1, Matrix_struct* matrix11, Matrix_struct* matrix12,
@@ -17,12 +17,12 @@ void game_init(Player* player1, Matrix_struct* matrix11, Matrix_struct* matrix12
 {
 	player1->matrix_1 = matrix11;
     player1->matrix_2 = matrix12;
-    player1->player_total_score = 0;  //setting score to 0 at the start
+    player1->player_total_score = 0;         //setting score to 0 at the start
     player1->LCD_number = lcd_1;
 
 	player2->matrix_1 = matrix21;
     player2->matrix_2 = matrix22;
-    player2->player_total_score = 0; //setting score to 0 at the start
+    player2->player_total_score = 0;       //setting score to 0 at the start
     player2->LCD_number = lcd_2;
 }
 
