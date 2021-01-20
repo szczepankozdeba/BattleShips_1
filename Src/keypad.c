@@ -33,25 +33,25 @@ uint8_t check_button(void)
 		    if ((HAL_GPIO_ReadPin (C21_GPIO_Port, C21_Pin))==0)   // if the Col 1 is low
 			{
 
-				return 5;
+				return 1;
 			}
 
 			if ((HAL_GPIO_ReadPin (C22_GPIO_Port, C22_Pin))==0)   // if the Col 2 is low
 			{
 
-				return 6;
+				return 2;
 			}
 			if ((HAL_GPIO_ReadPin (C23_GPIO_Port, C23_Pin))==0)   // if the Col 3 is low
 
 			{
 
-				return 7;
+				return 3;
 			}
 			if ((HAL_GPIO_ReadPin (C24_GPIO_Port, C24_Pin))==0)   // if the Col 3 is low
 
 			{
 
-				return 8;
+				return 4;
 			}
 
 			else return 0;

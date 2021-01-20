@@ -120,10 +120,12 @@ int main(void)
   matrix_LED_blnik_row(&matrix3, 2, 0b01010101);
   matrix_LED_blnik_row(&matrix4, 2, 0b01010101);
 */
+  game_init(&player1, &matrix1, &matrix2, &player2, &matrix4, &matrix3); //matryce WAZNE!!!
 
-  matrix_LED_on(&matrix1, 2, 6);
-  //matrix_LED_on(&matrix2, 2, 4);
- ;
+ // matrix_LED_on(&matrix1, 2, 6);
+ // matrix_LED_on(&matrix2, 2, 4);
+ // matrix_LED_on(&matrix3, 2, 6);
+ // matrix_LED_on(&matrix4, 2, 4);
 
   LCD_init(lcd_1, &hi2c3);
   LCD_init(lcd_2, &hi2c3);
@@ -143,9 +145,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-	  set_ships(&player1);
-
+	  //set_ships(&player1, 2);
+	  //shot(&player2, &player1);
+	  game();
+	  matrix_send_all();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
