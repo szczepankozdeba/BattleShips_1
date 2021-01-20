@@ -177,6 +177,8 @@ void set_ships(Player* player, uint8_t length)
 	    for (uint8_t i=0; i<length ; i++)
 	    matrix_LED_on(player->matrix_1, ship_current_position_x,ship_current_position_y -i );
 
+	    matrix_send_all();
+
 	    LCD_clear(player->LCD_number);
 	    LCD_set_cursor(player->LCD_number, 0,0);
 	    LCD_display(player->LCD_number, "[1] [2] [3] [4]");
@@ -189,21 +191,56 @@ void set_ships(Player* player, uint8_t length)
 	         {
 	         case 1:
 	        	 move_left(player,length);
+	        	 for (uint8_t i = 0;i<8;i++)
+	        	 	   	    		 {
+	        	 	   	    			 for (uint8_t j=0; j<8; j++)
+	        	 	   					 {
+	        	 	   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	        	 	   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	        	 	   					 }
+	        	 	   	    		 }
+	        	 matrix_send_all();
 	        	 break;
 	         case 2:
 	         	 move_right(player,length);
+
+	         	for (uint8_t i = 0;i<8;i++)
+	         		   	    		 {
+	         		   	    			 for (uint8_t j=0; j<8; j++)
+	         		   					 {
+	         		   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	         		   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	         		   					 }
+	         		   	    		 }
+	         	matrix_send_all();
 	         	 break;
 	         case 3:
 	        	 move_rotate(player, length);
+	        	 for (uint8_t i = 0;i<8;i++)
+	        	 	   	    		 {
+	        	 	   	    			 for (uint8_t j=0; j<8; j++)
+	        	 	   					 {
+	        	 	   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	        	 	   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	        	 	   					 }
+	        	 	   	    		 }
+	        	 matrix_send_all();
 	         	 break;
 	         case 4:
 	         	end=1;
+	         	for (uint8_t i = 0;i<8;i++)
+	         		   	    		 {
+	         		   	    			 for (uint8_t j=0; j<8; j++)
+	         		   					 {
+	         		   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	         		   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	         		   					 }
+	         		   	    		 }
+	         	matrix_send_all();
 	         	break;
 	         default:
 			 break;
 	         }
-
-	    	 matrix_send_all();
 	    	 if(end==1)
 	    	 {
 	    		 end =0;
@@ -215,7 +252,7 @@ void set_ships(Player* player, uint8_t length)
 	    LCD_set_cursor(player->LCD_number, 0,0);
 	    LCD_display(player->LCD_number, "[1] [2] [3]");
 	    LCD_set_cursor(player->LCD_number, 1,0);
-	    LCD_display(player->LCD_number, "[v] [^] [ok]");
+	    LCD_display(player->LCD_number, "[^] [v] [ok]");
 
 	    while(1)
 	   	    {
@@ -223,19 +260,44 @@ void set_ships(Player* player, uint8_t length)
 	   	         {
 	   	         case 1:
 	   	        	 move_down(player,length);
+	   	        	for (uint8_t i = 0;i<8;i++)
+	   	        		   	    		 {
+	   	        		   	    			 for (uint8_t j=0; j<8; j++)
+	   	        		   					 {
+	   	        		   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	   	        		   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	   	        		   					 }
+	   	        		   	    		 }
+	   	        	 matrix_send_all();
 	   	        	 break;
 	   	         case 2:
 	   	         	 move_up(player,length);
+	   	         	for (uint8_t i = 0;i<8;i++)
+	   	         		   	    		 {
+	   	         		   	    			 for (uint8_t j=0; j<8; j++)
+	   	         		   					 {
+	   	         		   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	   	         		   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	   	         		   					 }
+	   	         		   	    		 }
+	   	         	 matrix_send_all();
 	   	         	 break;
 	   	         case 3:
 	   	         	move_set(player, length);
+	   	         for (uint8_t i = 0;i<8;i++)
+	   	         	   	    		 {
+	   	         	   	    			 for (uint8_t j=0; j<8; j++)
+	   	         	   					 {
+	   	         	   	    				 if (player->ship_fixed_positions[i][j] == 1)
+	   	         	   	    				 matrix_LED_on(player->matrix_1,  i,j );
+	   	         	   					 }
+	   	         	   	    		 }
+	   	         	matrix_send_all();
 	   	         	end = 1;
 	   	         	break;
 	   	         default:
 	   			 break;
 	   	         }
-
-	   	    	 matrix_send_all();
 	   	    	 if(end==1)
 	   	    	 {
 	   	    		 for (uint8_t i = 0;i<8;i++)
@@ -260,6 +322,8 @@ void shot(Player* player1, Player* player2)
 
 		    matrix_LED_on(player1->matrix_2, ship_current_position_x,ship_current_position_y);
 
+		    matrix_send_all();
+
 		    LCD_clear(player1->LCD_number);
 		    LCD_set_cursor(player1->LCD_number, 0,0);
 		    LCD_display(player1->LCD_number, "[1] [2] [3] [4]");
@@ -278,12 +342,12 @@ void shot(Player* player1, Player* player2)
 		         	 break;
 		         case 4:
 		         	end=1;
+
 		         	break;
 		         default:
 				 break;
 		         }
-
-		    	 matrix_send_all();
+		         matrix_send_all();
 		    	 if(end==1)
 		    	 {
 		    		 end =0;
@@ -314,8 +378,7 @@ void shot(Player* player1, Player* player2)
 		   	         default:
 		   			 break;
 		   	         }
-
-		   	    	 matrix_send_all();
+		   	         matrix_send_all();
 		   	    	 if(end==1)
 		   	    	 {
 		   	    		 end=0;
@@ -331,6 +394,7 @@ void check_shot(Player* player1, Player* player2)
 	{
 		player1->ship_shot_positions[ship_current_position_x][ship_current_position_y]=1;
 		matrix_LED_blink(player1->matrix_2,ship_current_position_x,ship_current_position_y);
+		matrix_LED_blink(player2->matrix_1,ship_current_position_x,ship_current_position_y);
 		player1->player_total_score++;
 
 		LCD_clear(player1->LCD_number);
@@ -345,7 +409,7 @@ void check_shot(Player* player1, Player* player2)
 		LCD_set_cursor(player2->LCD_number, 1,0);
 		LCD_display(player2->LCD_number, "Trafil!");
 
-		HAL_Delay(1000);
+		HAL_Delay(2000);
 	}
 	else
 	{
@@ -364,7 +428,7 @@ void check_shot(Player* player1, Player* player2)
 		LCD_set_cursor(player2->LCD_number, 1,0);
 		LCD_display(player2->LCD_number, "spudlowal!");
 
-		HAL_Delay(1000);
+		HAL_Delay(2000);
 	}
 }
 
@@ -381,7 +445,27 @@ void game(void)
 	LCD_set_cursor(lcd_2, 1,0);
 	LCD_display(lcd_2, "************");
 
-	HAL_Delay(2000);
+	HAL_Delay(3000);
+
+
+	LCD_clear(lcd_1);
+	LCD_clear(lcd_2);
+	LCD_set_cursor(lcd_1, 0,0);
+	LCD_display(lcd_1, "Tura przeciwnika");
+	LCD_set_cursor(lcd_1, 1,0);
+	LCD_display(lcd_1, " ");
+	LCD_set_cursor(lcd_2, 0,0);
+	LCD_display(lcd_2, "Wybierz pozycje");
+	LCD_set_cursor(lcd_2, 1,0);
+	LCD_display(lcd_2, "statku");
+
+		HAL_Delay(3000);
+
+	set_ships(&player2,2);
+	set_ships(&player2,2);
+	set_ships(&player2,3);
+	set_ships(&player2,3);
+	set_ships(&player2,4);
 
 	LCD_clear(lcd_1);
 	LCD_clear(lcd_2);
@@ -390,43 +474,25 @@ void game(void)
 	LCD_set_cursor(lcd_1, 1,0);
 	LCD_display(lcd_1, "statku");
 	LCD_set_cursor(lcd_2, 0,0);
-	LCD_display(lcd_2, "Tura Gracza 1");
+	LCD_display(lcd_2, "Tura przeciwnika");
 	LCD_set_cursor(lcd_2, 1,0);
 	LCD_display(lcd_2, " ");
 
-	HAL_Delay(1000);
+	HAL_Delay(3000);
 
 	set_ships(&player1,2);
-	set_ships(&player2,2);
+	set_ships(&player1,2);
 	set_ships(&player1,3);
 	set_ships(&player1,3);
 	set_ships(&player1,4);
 
-	LCD_clear(lcd_1);
-	LCD_clear(lcd_2);
-	LCD_set_cursor(lcd_1, 0,0);
-	LCD_display(lcd_1, "Tura Gracza 2");
-	LCD_set_cursor(lcd_1, 1,0);
-	LCD_display(lcd_1, " ");
-	LCD_set_cursor(lcd_2, 0,0);
-	LCD_display(lcd_2, "Wybierz pozycje");
-	LCD_set_cursor(lcd_2, 1,0);
-	LCD_display(lcd_2, "statku");
-
-		HAL_Delay(1000);
-
-	set_ships(&player2,2);
-	set_ships(&player2,2);
-	set_ships(&player2,3);
-	set_ships(&player2,3);
-	set_ships(&player2,4);
 
 
 	while(1)
 	{
 		LCD_clear(player2.LCD_number);
 		LCD_set_cursor(player2.LCD_number, 0,0);
-		LCD_display(player2.LCD_number, "Ruch Gracza 1");
+		LCD_display(player2.LCD_number, "Ruch przeciwnika");
 		LCD_set_cursor(player2.LCD_number, 1,0);
 		LCD_display(player2.LCD_number, " ");
 
@@ -439,7 +505,7 @@ void game(void)
 
 		LCD_clear(player1.LCD_number);
 		LCD_set_cursor(player1.LCD_number, 0,0);
-		LCD_display(player1.LCD_number, "Ruch Gracza 2");
+		LCD_display(player1.LCD_number, "Ruch przeciwnika");
 		LCD_set_cursor(player1.LCD_number, 1,0);
 		LCD_display(player1.LCD_number, " ");
 
@@ -456,13 +522,13 @@ void game(void)
 		LCD_clear(lcd_1);
 		LCD_clear(lcd_2);
 		LCD_set_cursor(lcd_1, 0,0);
-		LCD_display(lcd_1, "Zwyciezyl");
+		LCD_display(lcd_1, "Zwyciezyles!");
 		LCD_set_cursor(lcd_2, 1,0);
-		LCD_display(lcd_1, "Gracz 1!");
+		LCD_display(lcd_1, " ");
 		LCD_set_cursor(lcd_1, 0,0);
-		LCD_display(lcd_2, "Zwyciezyl");
+		LCD_display(lcd_2, "Przegrales!");
 		LCD_set_cursor(lcd_2, 1,0);
-		LCD_display(lcd_2, "Gracz 1!");
+		LCD_display(lcd_2, " ");
 
 	}
 	else
@@ -470,13 +536,13 @@ void game(void)
 		LCD_clear(lcd_1);
 		LCD_clear(lcd_2);
 		LCD_set_cursor(lcd_1, 0,0);
-		LCD_display(lcd_1, "Zwyciezyl");
+		LCD_display(lcd_1, "Przegrales!");
 		LCD_set_cursor(lcd_2, 1,0);
-		LCD_display(lcd_1, "Gracz 2!");
+		LCD_display(lcd_1, " ");
 		LCD_set_cursor(lcd_1, 0,0);
-		LCD_display(lcd_2, "Zwyciezyl");
+		LCD_display(lcd_2, "Zwyciezyles!");
 		LCD_set_cursor(lcd_2, 1,0);
-		LCD_display(lcd_2, "Gracz 2!");
+		LCD_display(lcd_2, " ");
 
 	}
 }
