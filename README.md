@@ -24,9 +24,8 @@ Flash the compiled code onto your STM32 microcontroller.
 Connect the required peripherals (LED matrices, keyboard, LCD displays) to the appropriate GPIO pins on your STM32 board.
 Power on the STM32 board and start playing the Battleship game!
 
-
 Video Demo
-To see the final project in action and understand how it works, watch the video demonstration here :
+To see the final project in action and understand how it works, watch the video demonstration here : https://www.youtube.com/watch?v=cxyIufpi-wc
 
 
 
