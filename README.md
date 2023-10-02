@@ -1,5 +1,6 @@
 # BattleShips_1
 
+<img src="https://github.com/szczepankozdeba/BattleShips_1/assets/48669369/2d02a30d-5004-4f9d-8948-18741e961866" width="500">  
 
 This repository contains the complete source code and documentation for an embedded Battleship game project implemented on an STM32 embedded system. 
 The project utilizes external peripherals such as LED matrices, keyboards, and LCD displays to create a functional Battleship game.
