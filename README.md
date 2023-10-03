@@ -1,6 +1,7 @@
 # BattleShips_1
 
 <img src="https://github.com/szczepankozdeba/BattleShips_1/assets/48669369/2d02a30d-5004-4f9d-8948-18741e961866" width="500">  
+
 LED Matrices -  The game board is displayed on LED matrices, providing a visual representation of the Battleship grid.
 Keyboard Input - Players can input their moves using an external keyboard, making the game interactive and engaging.
 LCD Displays - LCD displays show game status, player turns, and other relevant information.
