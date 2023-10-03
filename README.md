@@ -5,7 +5,7 @@
 LED Matrices -  The game board is displayed on LED matrices, providing a visual representation of the Battleship grid.    
 Keyboard Input - Players can input their moves using an external keyboard, making the game interactive and engaging.    
 LCD Displays - LCD displays show game status, player turns, and other relevant information.     
-Real-Time Gameplay: The game offers real-time gameplay, allowing players to take turns and strategize.     
+Real-Time Gameplay - The game offers real-time gameplay, allowing players to take turns and strategize.     
 
 This repository contains the complete source code and documentation for an embedded Battleship game project implemented on an STM32 embedded system. 
 The project utilizes external peripherals such as LED matrices, keyboards, and LCD displays to create a functional Battleship game.
